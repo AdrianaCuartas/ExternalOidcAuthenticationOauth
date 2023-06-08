@@ -1,0 +1,23 @@
+﻿@if(Providers!=null && Providers.Any())
+ {
+     <section @attributes=Attributes >
+        @foreach(var Item in Providers)
+         {
+            <span @onclick=@(()=>BuildUrl(Item.Provider))>
+
+             @if (ButtonContent != null)
+              {
+                  @ButtonContent(Item.Provider) 
+              }
+              else
+              {
+                <div class="linkButton">
+                    <img src="@ImagePath(Item)">@Item.Provider
+               </div>
+ 
+              }
+            </span>
+         }
+      </section>
+  }
+
