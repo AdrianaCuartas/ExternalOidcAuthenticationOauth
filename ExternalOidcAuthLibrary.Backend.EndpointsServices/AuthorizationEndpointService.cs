@@ -1,5 +1,8 @@
-﻿using ExternalOidcAuthLibrary.Backend.Entities.Interfaces;
+﻿using ExternalOidcAuthLibrary.Backend.Entities.Enums;
+using ExternalOidcAuthLibrary.Backend.Entities.Interfaces;
 using ExternalOidcAuthLibrary.Backend.Entities.Interfaces.Endpoints;
+using ExternalOidcAuthLibrary.Backend.Entities.ValueObjects;
+using ExternalOidcAuthLibrary.Shared.Entities.Builders;
 using ExternalOidcAuthLibrary.Shared.Entities.Constants;
 using Microsoft.AspNetCore.Http;
 
@@ -44,7 +47,54 @@ internal class AuthorizationEndpointService : IAuthorizationEndpoinstService
         {
             var Client = await Clients.GetClientConfigurationAsync(ClientId);
 
+            if (Client != null && Client.RedirectUri == RedirectUri)
+            {
+                string ScopeProvider = Scope.Substring(Scope.IndexOf("_") + 1);
+                Provider IdProvider = (Provider)Enum.Parse(typeof(Provider), ScopeProvider);
+                var ProviderConfiguration = await Providers.GetProviderAsync(IdProvider);
 
+                var Builder = new AuthorizationRequestBuilder(ProviderConfiguration.Authorization_Endpoint)
+                    .SetClientId(ProviderConfiguration.ClientId)
+                    .SetRedirectUri(ProviderConfiguration.RedirectUri)
+                    .SetScope("openid profile email");
+
+                if (ProviderConfiguration.SupportS256ChallengeMethod)
+                {
+                    Builder.SetCodeChallegeS256();
+                }
+                else
+                {
+                    Builder.SetCodeChallegePlain();
+                }
+
+                RequestState Data = new()
+                {
+                    CodeVerifier = Builder.CodeVerifier,
+                    Nonce = Builder.Nonce,
+                    Provider = IdProvider,
+                    ClientData = new RequestStateClientData()
+                    {
+                        ClientId = ClientId,
+                        RedirectUri = RedirectUri,
+                        Scope = Scope,
+                        State = State,
+                        CodeChallenge = CodeChallenge,
+                        Nonce = Nonce
+                    }
+                };
+                await ApiStateService.SetItemAsync(Builder.State, Data);
+                string UrlRedirect = Builder.Builder();
+                Result = Results.Redirect(UrlRedirect);
+            }
+            else
+            {
+                Result = Results.BadRequest(ErrorResponses.InvalidClient);
+            }
+
+        }
+        else
+        {
+            Result = Results.BadRequest(ErrorResponses.InvalidRequest);
         }
         return Result;
     }

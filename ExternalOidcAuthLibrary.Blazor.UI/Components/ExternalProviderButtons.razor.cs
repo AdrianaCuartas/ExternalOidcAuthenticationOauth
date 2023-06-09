@@ -62,7 +62,7 @@ public partial class ExternalProviderButtons
     {
         var Builder = new AuthorizationRequestBuilder(
             AppOptions.Value.Authorization_Endpoint)
-            .SetClientId(AppOptions.Value.ClientId)
+            .SetClientId(AppOptions.Value.Client_Id)
             .SetRedirectUri(AppOptions.Value.Redirect_Uri)
             .SetScope($"{ScopeAction}_{provider}")
             .SetCodeChallegeS256();

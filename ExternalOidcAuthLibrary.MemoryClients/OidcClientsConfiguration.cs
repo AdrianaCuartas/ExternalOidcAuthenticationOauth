@@ -14,3 +14,4 @@ public class OidcClientsConfiguration : IOidcClientsConfiguration
 
         return await Task.FromResult(ClientsOptions[clientId]);
     }
+}

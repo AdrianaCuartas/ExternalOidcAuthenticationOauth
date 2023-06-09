@@ -4,7 +4,7 @@ public interface IApiStateService
 {
     Task SetItemAsync(string state, RequestState stateValue);
 
-    Task<RequestState> GetItemSateAsync(string state);
+    Task<RequestState> GetItemStateAsync(string state);
 
 
     Task RemoveItemSateAsync(string state);

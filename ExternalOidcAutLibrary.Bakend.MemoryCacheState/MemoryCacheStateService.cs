@@ -7,7 +7,7 @@ public class MemoryCacheStateService : IApiStateService
     {
         Cache = cache;
     }
-    public Task<RequestState> GetItemSateAsync(string state)
+    public Task<RequestState> GetItemStateAsync(string state)
     {
         Cache.TryGetValue(state, out RequestState statevalue);
         return Task.FromResult(statevalue);

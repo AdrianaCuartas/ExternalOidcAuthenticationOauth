@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ExternalOidcAuthLibrary.Backen.MemoryProviders\ExternalOidcAuthLibrary.Backend.MemoryProviders.csproj" />
+    <ProjectReference Include="..\ExternalOidcAuthLibrary.Backend.EndpointsServices\ExternalOidcAuthLibrary.Backend.EndpointsServices.csproj" />
+    <ProjectReference Include="..\ExternalOidcAuthLibrary.MemoryClients\ExternalOidcAuthLibrary.Backend.MemoryClients.csproj" />
+    <ProjectReference Include="..\ExternalOidcAutLibrary.Bakend.MemoryCacheState\ExternalOidcAutLibrary.Bakend.MemoryCacheState.csproj" />
+  </ItemGroup>
+
+</Project>

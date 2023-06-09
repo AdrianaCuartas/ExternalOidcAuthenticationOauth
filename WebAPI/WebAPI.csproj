@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ExternalOidcAuthLibrary.Backend.Entities\ExternalOidcAuthLibrary.Backend.Entities.csproj" />
+    <ProjectReference Include="..\ExternalOidcAuthLibrary.Backend.IoC\ExternalOidcAuthLibrary.Backend.IoC.csproj" />
   </ItemGroup>
 
 </Project>

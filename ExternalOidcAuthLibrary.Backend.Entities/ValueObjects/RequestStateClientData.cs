@@ -1,4 +1,6 @@
-﻿namespace ExternalOidcAuthLibrary.Backend.Entities.ValueObjects;
+﻿using ExternalOidcAuthLibrary.Shared.Entities.ValueObjects;
+
+namespace ExternalOidcAuthLibrary.Backend.Entities.ValueObjects;
 
 public class RequestStateClientData
 {
@@ -14,4 +16,6 @@ public class RequestStateClientData
     public string CodeChallengeMethod { get; set; }
 
     public string Nonce { get; set; }
+
+    public Tokens Tokens { get; set; }
 }

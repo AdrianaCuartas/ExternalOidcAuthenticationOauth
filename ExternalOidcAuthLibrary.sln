@@ -27,11 +27,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExternalOidcAuthLibrary.Bac
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExternalOidcAuthLibrary.Backend.MemoryClients", "ExternalOidcAuthLibrary.MemoryClients\ExternalOidcAuthLibrary.Backend.MemoryClients.csproj", "{B6345AB3-D88C-46A7-AC1E-02430C2EA233}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExternalOidcAuthLibrary.Backend.MemoryProviders", "ExternalOidcAuthLibrary.Backen.MemoryProviders\ExternalOidcAuthLibrary.Backend.MemoryProviders.csproj", "{FDB7FA5F-A912-48B9-B9E3-956236AA1021}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExternalOidcAuthLibrary.Backend.MemoryProviders", "ExternalOidcAuthLibrary.Backen.MemoryProviders\ExternalOidcAuthLibrary.Backend.MemoryProviders.csproj", "{FDB7FA5F-A912-48B9-B9E3-956236AA1021}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExternalOidcAutLibrary.Bakend.MemoryCacheState", "ExternalOidcAutLibrary.Bakend.MemoryCacheState\ExternalOidcAutLibrary.Bakend.MemoryCacheState.csproj", "{BA208761-AA32-4BAA-B661-BAF1C949A6C4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExternalOidcAutLibrary.Bakend.MemoryCacheState", "ExternalOidcAutLibrary.Bakend.MemoryCacheState\ExternalOidcAutLibrary.Bakend.MemoryCacheState.csproj", "{BA208761-AA32-4BAA-B661-BAF1C949A6C4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExternalOidcAuthLibrary.Backend.EndpointsServices", "ExternalOidcAuthLibrary.Backend.EndpointsServices\ExternalOidcAuthLibrary.Backend.EndpointsServices.csproj", "{F64716BD-288A-4367-AEA4-28572BE5C796}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExternalOidcAuthLibrary.Backend.EndpointsServices", "ExternalOidcAuthLibrary.Backend.EndpointsServices\ExternalOidcAuthLibrary.Backend.EndpointsServices.csproj", "{F64716BD-288A-4367-AEA4-28572BE5C796}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExternalOidcAuthLibrary.Backend.IoC", "ExternalOidcAuthLibrary.Backend.IoC\ExternalOidcAuthLibrary.Backend.IoC.csproj", "{7D0DF6AB-E0C4-4B22-B1E4-CE775480BE03}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -87,6 +89,10 @@ Global
 		{F64716BD-288A-4367-AEA4-28572BE5C796}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F64716BD-288A-4367-AEA4-28572BE5C796}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F64716BD-288A-4367-AEA4-28572BE5C796}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D0DF6AB-E0C4-4B22-B1E4-CE775480BE03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D0DF6AB-E0C4-4B22-B1E4-CE775480BE03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D0DF6AB-E0C4-4B22-B1E4-CE775480BE03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D0DF6AB-E0C4-4B22-B1E4-CE775480BE03}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -102,6 +108,7 @@ Global
 		{FDB7FA5F-A912-48B9-B9E3-956236AA1021} = {1D417078-90A7-417D-A49D-F96921276241}
 		{BA208761-AA32-4BAA-B661-BAF1C949A6C4} = {1D417078-90A7-417D-A49D-F96921276241}
 		{F64716BD-288A-4367-AEA4-28572BE5C796} = {1D417078-90A7-417D-A49D-F96921276241}
+		{7D0DF6AB-E0C4-4B22-B1E4-CE775480BE03} = {1D417078-90A7-417D-A49D-F96921276241}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {34FF4CE5-49AB-4832-B7B0-9C7F54760FBE}

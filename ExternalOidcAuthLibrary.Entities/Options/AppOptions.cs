@@ -7,7 +7,7 @@ public class AppOptions
 
     public const string SectionKey = nameof(AppOptions);
 
-    public string ClientId { get; set; }
+    public string Client_Id { get; set; }
 
     public string Redirect_Uri { get; set; }
 
