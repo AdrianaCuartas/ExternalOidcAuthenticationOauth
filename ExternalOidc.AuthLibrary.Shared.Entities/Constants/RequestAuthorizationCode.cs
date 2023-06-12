@@ -3,7 +3,7 @@
 public static class RequestAuthorizationCode
 {
 
-    public const string ResponseType = "response_Type";
+    public const string ResponseType = "response_type";
 
     public const string ClientId = "client_id";
 
