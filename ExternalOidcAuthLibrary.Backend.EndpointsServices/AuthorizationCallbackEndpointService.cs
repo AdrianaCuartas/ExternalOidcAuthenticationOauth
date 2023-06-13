@@ -5,6 +5,9 @@ using ExternalOidcAuthLibrary.Shared.Entities.Builders;
 using ExternalOidcAuthLibrary.Shared.Entities.ValueObjects;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
+using System.IdentityModel.Tokens.Jwt;
+using System.Net.Http.Json;
+using System.Text.Json;
 
 namespace ExternalOidcAuthLibrary.Backend.EndpointsServices;
 
@@ -61,8 +64,49 @@ internal class AuthorizationCallbackEndpointService : IAuthorizationCallbackEndp
 
         var ProviderInfo = await Providers.GetProviderAsync(Provider);
 
-        //Aqui vamos......
-        var RequestBody = new RequestTokenBodyBuilder();
+        var RequestBody = new RequestTokenBodyBuilder()
+            .SetAuthorizationCode(code)
+            .SetRedirectUri(ProviderInfo.RedirectUri)
+            .SetClientId(ProviderInfo.ClientId)
+            .SetScope("openid profile email")
+            .SetCodeVerifier(CodeVerifier)
+            .SetClientSecret(ProviderInfo.ClientSecret)
+            .Build();
+        HttpClient Client = HttpClientFactory.CreateClient();
+        var Response = await Client.PostAsync(ProviderInfo.Token_Endpoint, RequestBody);
+
+        var JsonElement = await Response.Content.ReadFromJsonAsync<JsonElement>();
+
+        if (Response.IsSuccessStatusCode)
+        {
+            if (JsonElement.TryGetProperty("id_token", out JsonElement idTokenJson))
+            {
+                string idTokenToVerify = idTokenJson.ToString();
+                var Handler = new JwtSecurityTokenHandler();
+
+                var JwtToken = Handler.ReadJwtToken(idTokenToVerify);
+
+                var IdTokenNonce = JwtToken.Claims
+                    .FirstOrDefault(c => c.Type == "nonce")?.Value;
+                if (IdTokenNonce != null && stateData.Nonce == IdTokenNonce)
+                {
+                    Tokens = new()
+                    {
+                        Id_Token = idTokenToVerify
+                    };
+                    if (JsonElement.TryGetProperty("access_token", out JsonElement accessTokenJson))
+                    {
+                        Tokens.Access_Token = accessTokenJson.ToString();
+                    }
+                }
+
+
+            }
+        }
+        else
+        {
+            Logger.LogError(JsonElement.GetRawText());
+        }
         return Tokens;
 
     }

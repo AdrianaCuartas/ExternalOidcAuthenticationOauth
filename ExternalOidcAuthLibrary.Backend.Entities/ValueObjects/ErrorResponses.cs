@@ -13,7 +13,7 @@ public static class ErrorResponses
     public static ErrorResponse InvalidClient => new ErrorResponse("invalid_client", "Client authentication failed");
 
 
-    public static ErrorResponse InvalidScope => new ErrorResponse("invalid_scope", "Unsupported_grant_type");
+    public static ErrorResponse InvalidScope => new ErrorResponse("invalid_scope", "the scope requested is invalid");
 
 
     public static ErrorResponse InvalidCodeVerifier => new ErrorResponse("invalid_grant", "Invalid code_verifier");

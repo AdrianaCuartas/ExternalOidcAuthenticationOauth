@@ -9,8 +9,13 @@ namespace ExternalOidcAuthLibrary.Backend.EndpointsServices
         public static IServiceCollection AddEndpointsServices(
             this IServiceCollection services)
         {
-            services.TryAddSingleton<IAuthorizationEndpoinstService, AuthorizationEndpointService>();
+            services.TryAddSingleton<IAuthorizationEndpoinstService,
+                AuthorizationEndpointService>();
 
+            services.TryAddSingleton<IAuthorizationCallbackEndpointService,
+                AuthorizationCallbackEndpointService>();
+
+            services.AddHttpClient();
             return services;
         }
     }

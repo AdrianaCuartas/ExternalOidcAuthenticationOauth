@@ -33,7 +33,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExternalOidcAutLibrary.Bake
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExternalOidcAuthLibrary.Backend.EndpointsServices", "ExternalOidcAuthLibrary.Backend.EndpointsServices\ExternalOidcAuthLibrary.Backend.EndpointsServices.csproj", "{F64716BD-288A-4367-AEA4-28572BE5C796}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExternalOidcAuthLibrary.Backend.IoC", "ExternalOidcAuthLibrary.Backend.IoC\ExternalOidcAuthLibrary.Backend.IoC.csproj", "{7D0DF6AB-E0C4-4B22-B1E4-CE775480BE03}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExternalOidcAuthLibrary.Backend.IoC", "ExternalOidcAuthLibrary.Backend.IoC\ExternalOidcAuthLibrary.Backend.IoC.csproj", "{7D0DF6AB-E0C4-4B22-B1E4-CE775480BE03}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

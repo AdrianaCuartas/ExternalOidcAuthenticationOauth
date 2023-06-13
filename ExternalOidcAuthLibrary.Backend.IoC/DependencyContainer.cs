@@ -34,6 +34,10 @@ public static class DependendencyContainer
         app.MapGet(OidceMetadata.Authorization_Endpoint,
             async (HttpContext context, IAuthorizationEndpoinstService service) =>
             await service.AuthorizeAsync(context));
+
+        app.MapGet(OidceMetadata.AuthorizationCallback_Endpoint,
+            async (HttpContext context, IAuthorizationCallbackEndpointService service) =>
+            await service.HandleAuthorizacionCodeAsync(context));
         return app;
     }
 }
