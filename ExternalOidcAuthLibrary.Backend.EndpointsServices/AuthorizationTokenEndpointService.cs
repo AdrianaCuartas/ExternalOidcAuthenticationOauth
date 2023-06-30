@@ -93,7 +93,8 @@ internal class AuthorizationTokenEndpointService : IAuthorizationTokenEndpointSe
         string result;
         try
         {
-            result = token.Claims.Where(c => c.Type == claim).Select(c => c.Value).FirstOrDefault();
+            result = token.Claims.Where(c => c.Type == claim)
+                .Select(c => c.Value).FirstOrDefault();
         }
         catch (Exception)
         {
