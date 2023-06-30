@@ -45,11 +45,8 @@ internal class AuthorizationTokenEndpointService : IAuthorizationTokenEndpointSe
                 Result = Results.Ok(Tokens);
 
             }
-
         }
         return Result;
-
-
     }
 
     private Tokens GetTokens(string scope, string id_Token, Provider idProvider, string nonce)
@@ -84,17 +81,26 @@ internal class AuthorizationTokenEndpointService : IAuthorizationTokenEndpointSe
         var Handler = new JwtSecurityTokenHandler();
         var Token = Handler.ReadJwtToken(IdToken);
 
-        UserData.Sub = Token.Claims.Where(c => c.Type == "sub")
-            .Select(c => c.Value).FirstOrDefault();
-        UserData.FirstName = Token.Claims.Where(c => c.Type == "given_name")
-            .Select(c => c.Value).FirstOrDefault();
-        UserData.LastName = Token.Claims.Where(c => c.Type == "family_name")
-            .Select(c => c.Value).FirstOrDefault();
-        UserData.Email = Token.Claims.Where(c => c.Type == "email")
-            .Select(c => c.Value).FirstOrDefault();
-
+        UserData.Sub = GetValue(Token, "sub");
+        UserData.FirstName = GetValue(Token, "given_name");
+        UserData.LastName = GetValue(Token, "family_name");
+        UserData.Email = GetValue(Token, "email");
         return UserData;
+    }
 
+    string GetValue(JwtSecurityToken token, string claim)
+    {
+        string result;
+        try
+        {
+            result = token.Claims.Where(c => c.Type == claim).Select(c => c.Value).FirstOrDefault();
+        }
+        catch (Exception)
+        {
+
+            result = string.Empty;
+        }
+        return result;
     }
 }
 
