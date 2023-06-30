@@ -1,14 +1,6 @@
-﻿using ExternalOidcAuthLibrary.Backend.Entities.Enums;
-using ExternalOidcAuthLibrary.Backend.Entities.Interfaces;
-using ExternalOidcAuthLibrary.Backend.Entities.Interfaces.Endpoints;
-using ExternalOidcAuthLibrary.Backend.Entities.ValueObjects;
-using ExternalOidcAuthLibrary.Shared.Entities.Builders;
-using ExternalOidcAuthLibrary.Shared.Entities.Constants;
-using Microsoft.AspNetCore.Http;
+﻿namespace ExternalOidcAuthLibrary.Backend.EndpointsServices;
 
-namespace ExternalOidcAuthLibrary.Backend.EndpointsServices;
-
-internal class AuthorizationEndpointService : IAuthorizationEndpoinstService
+internal class AuthorizationEndpointService : IAuthorizationEndpointService
 {
     readonly IOidcProvidersConfiguration Providers;
     readonly IOidcClientsConfiguration Clients;

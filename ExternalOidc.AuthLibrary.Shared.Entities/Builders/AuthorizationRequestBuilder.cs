@@ -84,6 +84,7 @@ public class AuthorizationRequestBuilder
         SB.Append($"{RequestAuthorizationCode.CodeChallengeMethod}={CodeChallengeMethod}&");
         SB.Append($"{RequestAuthorizationCode.Nonce}={Nonce}");
 
+
         return SB.ToString();
 
     }

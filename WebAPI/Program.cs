@@ -1,6 +1,8 @@
 using ExternalOidcAuthLibrary.Backend.IoC;
 using ExternalOidcAuthLibrary.Backend.MemoryClients.Options;
 using ExternalOidcAuthLibrary.Backend.MemoryProviders.Options;
+using ExternalOidcAuthLibrary.Shared.Entities.Interfaces;
+using WebAPI.FakeServices;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,17 +11,23 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddCors(o => o.AddPolicy("CallbackAuth", builder =>
+{
+    builder.AllowAnyOrigin()
+    .AllowAnyMethod()
+    .AllowAnyHeader();
+}));
 
+builder.Services.AddSingleton<IUserProvider, UserProvider>();
 // external Oidce Auth Library
-
 builder.Services.AddExternalOidcAuthLibraryServices(
     c =>
       builder.Configuration.GetSection(
        ClientConfigurationOptions.SectionKey).Bind(c),
     p =>
       builder.Configuration.GetSection
-      (ProviderConfigurationOptions.SectionKey).Bind(p));
-
+      (ProviderConfigurationOptions.SectionKey).Bind(p)
+      );
 
 //builder.Services.Configure<ClientConfigurationOptions>(builder.Configuration.GetSection(ClientConfigurationOptions.SectionKey));
 var app = builder.Build();
@@ -31,9 +39,13 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseCors("CallbackAuth");
 
 app.UseHttpsRedirection();
 
 app.UseExternalOidcLibraryEndPoints();
+
+
+
 app.Run();
 

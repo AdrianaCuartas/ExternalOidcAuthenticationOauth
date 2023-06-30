@@ -1,0 +1,23 @@
+﻿@page "/oauth2/callback"
+@inherits ExternalCallBackEndpointBase
+
+<div class="card" style="max-width:850px;">
+    <div class="card-header">
+        ID Token
+    </div>
+    <div class="card-body">
+        <p class="response-content">
+            @IdToken
+        </p>
+    </div>
+</div>
+<div class="card" style="max-width:850px;">
+    <div class="card-header">
+        Access token
+    </div>
+    <div class="card-body">
+        <p class="response-content">
+            @AccessToken
+        </p>
+    </div>
+</div>

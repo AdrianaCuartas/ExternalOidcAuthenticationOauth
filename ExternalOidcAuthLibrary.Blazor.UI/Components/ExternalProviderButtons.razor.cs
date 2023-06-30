@@ -5,7 +5,6 @@ public partial class ExternalProviderButtons
 {
 
     #region Services
-
     [Inject]
     IOptions<AppOptions> AppOptions { get; set; }
 

@@ -16,7 +16,9 @@ public static class DependendencyContainer
     public static IServiceCollection AddExternalOidcAuthLibraryServices(
         this IServiceCollection services,
         Action<Dictionary<string, ClientConfiguration>> clientsSetter,
-         Action<Dictionary<Provider, ProviderConfiguration>> providerSetter)
+         Action<Dictionary<Provider, ProviderConfiguration>> providerSetter
+
+         )
     {
 
         services.AddMemoryCacheStateServices()
@@ -32,12 +34,17 @@ public static class DependendencyContainer
     {
 
         app.MapGet(OidceMetadata.Authorization_Endpoint,
-            async (HttpContext context, IAuthorizationEndpoinstService service) =>
+            async (HttpContext context, IAuthorizationEndpointService service) =>
             await service.AuthorizeAsync(context));
 
         app.MapGet(OidceMetadata.AuthorizationCallback_Endpoint,
             async (HttpContext context, IAuthorizationCallbackEndpointService service) =>
             await service.HandleAuthorizacionCodeAsync(context));
+
+        app.MapPost(OidceMetadata.Token_Endpoint, async (HttpContext context,
+            IAuthorizationTokenEndpointService service) =>
+             await service.GetTokensAsync(context));
+
         return app;
     }
 }

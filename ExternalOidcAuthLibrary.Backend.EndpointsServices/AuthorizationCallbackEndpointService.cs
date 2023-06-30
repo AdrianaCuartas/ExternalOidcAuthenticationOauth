@@ -1,15 +1,4 @@
-﻿using ExternalOidcAuthLibrary.Backend.Entities.Interfaces;
-using ExternalOidcAuthLibrary.Backend.Entities.Interfaces.Endpoints;
-using ExternalOidcAuthLibrary.Backend.Entities.ValueObjects;
-using ExternalOidcAuthLibrary.Shared.Entities.Builders;
-using ExternalOidcAuthLibrary.Shared.Entities.ValueObjects;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Logging;
-using System.IdentityModel.Tokens.Jwt;
-using System.Net.Http.Json;
-using System.Text.Json;
-
-namespace ExternalOidcAuthLibrary.Backend.EndpointsServices;
+﻿namespace ExternalOidcAuthLibrary.Backend.EndpointsServices;
 
 internal class AuthorizationCallbackEndpointService : IAuthorizationCallbackEndpointService
 {

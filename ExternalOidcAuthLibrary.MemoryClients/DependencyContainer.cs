@@ -1,6 +1,4 @@
-﻿using ExternalOidcAuthLibrary.Backend.Entities.Interfaces;
-using ExternalOidcAuthLibrary.Backend.Entities.ValueObjects;
-using ExternalOidcAuthLibrary.Backend.MemoryClients.Options;
+﻿using ExternalOidcAuthLibrary.Backend.MemoryClients.Options;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 

@@ -1,4 +1,5 @@
 ﻿using ExternalOidcAuthLibrary.Blazor.UI.Services;
+using ExternalOidcAuthLibrary.Shared.Entities.Interfaces;
 
 namespace ExternalOidcAuthLibrary.Blazor.UI
 {
@@ -9,6 +10,10 @@ namespace ExternalOidcAuthLibrary.Blazor.UI
         {
 
             services.AddScoped<IAppStateService, AppStateService>();
+
+            services.AddHttpClient(nameof(IRequestTokenService));
+            services.AddScoped<IRequestTokenService, RequestTokenService>();
+
             return services;
         }
     }
